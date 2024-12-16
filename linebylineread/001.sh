@@ -19,3 +19,10 @@ done < "$file"
 while IFS=: read -r user pass uid gid gecos home shell; do
 	printf '%s: %s\n' "$user" "$shell"
 done < /etc/passwd
+
+
+#skip
+while read -r line; do
+	[[ $line = \#* ]] && continue
+	printf '%s\n' "$line"
+done < "$file"
