@@ -39,3 +39,24 @@ for i in "${ref[@]}"; do ...; done
 realvariable=contents
 ref=realvariable
 printf '%s\n' "${!ref}"
+
+
+#değişkenin değerini bir array (dizi) yapma
+aref=realarray
+IFS=' ' read -d '' -ra "$aref" <<<'words go into array elements'
+echo "${realarray[0]}" #output: words
+
+
+#EOF icinde verilen degeri bir degiskenin degerine yazma
+ref=realvariable
+IFS= read -r -d '' -- "$ref" <<EOF
+The contents
+go here.
+EOF
+echo "${realvariable"}
+
+#declare ile ref tutma
+ref=realvariable
+declare -- "${ref}=contents"
+
+echo "$realvariable"   # Çıktı: contents

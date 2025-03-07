@@ -44,7 +44,7 @@ printf 'total lines: %d\n' "$linecount"
 
 
 #skip blank line
-while IFS= read =r line; do
+while IFS= read -r line; do
 	printf '%s\n' "$line"
 done < "$file"
 [[ -n $line ]] && printf %s "$line"
